@@ -1,5 +1,5 @@
 import { New, PrismaClient } from '@prisma/client'
-import { NewService } from './services/new.service'
+import { NewService } from './new.service'
 import { v4 as uuid } from 'uuid'
 
 describe('NewService tests', () => {
