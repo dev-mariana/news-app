@@ -15,7 +15,7 @@ model New {
   title String @unique
   description String
   type String
-  created_at DateTime @default(now())
+  created_at DateTime? @default(now())
   writer String 
 
   @@map("new")

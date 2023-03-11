@@ -4,7 +4,7 @@ CREATE TABLE "new" (
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "type" TEXT NOT NULL,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "writer" TEXT NOT NULL,
 
     CONSTRAINT "new_pkey" PRIMARY KEY ("id")
