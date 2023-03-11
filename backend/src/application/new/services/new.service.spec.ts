@@ -16,11 +16,37 @@ describe('NewService tests', () => {
       title: 'Test',
       description: 'test',
       type: 'teste',
-      created_at: new Date(),
+      created_at: null,
       writer: 'teste',
     }
 
     const result = await newService.create(data)
     expect(result).toEqual(data)
+  })
+
+  it('Should find a new by title', async () => {
+    const data: New = {
+      id: '3d496809-a5db-4885-a87e-d4c477890f58',
+      title: 'Test',
+      description: 'test',
+      type: 'teste',
+      created_at: null,
+      writer: 'teste',
+    }
+
+    await prisma.new.create({ data })
+
+    const title = 'Test'
+    const resultMock: New = {
+      id: '3d496809-a5db-4885-a87e-d4c477890f58',
+      title: 'Test',
+      description: 'test',
+      type: 'teste',
+      created_at: null,
+      writer: 'teste',
+    }
+
+    const result = await newService.findOne(title)
+    expect(result).toEqual(resultMock)
   })
 })
