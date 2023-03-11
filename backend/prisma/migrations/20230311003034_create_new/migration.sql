@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "New" (
+CREATE TABLE "new" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
@@ -7,11 +7,5 @@ CREATE TABLE "New" (
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "writer" TEXT NOT NULL,
 
-    CONSTRAINT "New_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "new_pkey" PRIMARY KEY ("id")
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "New_id_key" ON "New"("id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "New_title_key" ON "New"("title");

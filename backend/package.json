@@ -8,26 +8,30 @@
     "husky:prepare": "husky install",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "prettier": "prettier \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest --passWithNoTests",
-    "test:watch": "npm run test --watch",
-    "test:staged": "npm run test --findRelatedTests",
-    "test:cov": "npm run test --coverage"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:staged": "jest --findRelatedTests",
+    "test:cov": "jest --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^4.11.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "pg": "^8.9.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@eslint/create-config": "^0.4.2",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.14.6",
+    "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
     "eslint": "^8.35.0",

@@ -11,10 +11,12 @@ datasource db {
 }
 
 model New {
-  id String @id @unique @default(uuid())
-  title String @unique
+  id String @id @default(uuid())
+  title String 
   description String
   type String
   created_at DateTime @default(now())
   writer String 
+
+  @@map("new")
 }
