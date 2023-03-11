@@ -10,4 +10,8 @@ export class NewService {
       data,
     })
   }
+
+  async findOne(title: string): Promise<New> {
+    return await this.prisma.new.findUnique({ where: { title } })
+  }
 }

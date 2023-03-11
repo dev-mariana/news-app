@@ -9,3 +9,6 @@ CREATE TABLE "new" (
 
     CONSTRAINT "new_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "new_title_key" ON "new"("title");

@@ -18,12 +18,17 @@ export class NewController {
       writer,
     }
 
+    const titleExists = await newService.findOne(title)
+
     try {
+      if (titleExists) {
+        throw new Error(`The new with name ${title} already exists.`)
+      }
+
       const createdNew = await newService.create(data)
       res.status(201).json(createdNew)
     } catch (error) {
-      res.status(500).send('Failed to create a new')
-      console.log(error)
+      res.status(500).send(`${error}`)
     }
   }
 }
