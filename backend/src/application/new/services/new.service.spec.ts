@@ -6,6 +6,10 @@ describe('NewService tests', () => {
   const prisma = new PrismaClient()
   const newService = new NewService(prisma)
 
+  beforeAll(async () => await prisma.$connect())
+  afterAll(async () => await prisma.$disconnect())
+  afterEach(async () => await prisma.new.deleteMany())
+
   it('Should create a new', async () => {
     const data: New = {
       id: uuid(),
@@ -15,6 +19,7 @@ describe('NewService tests', () => {
       created_at: new Date(),
       writer: 'teste',
     }
+
     const result = await newService.create(data)
     expect(result).toEqual(data)
   })
