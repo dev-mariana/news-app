@@ -18,6 +18,14 @@ export class NewController {
       writer,
     }
 
+    if (!title || !description || !type || !writer) {
+      res
+        .status(400)
+        .json({
+          message: 'is missing title or description or type or writer field.',
+        })
+    }
+
     const titleExists = await newService.findOne(title)
 
     try {
