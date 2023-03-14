@@ -2,6 +2,7 @@ import { New, PrismaClient } from '@prisma/client'
 import { Request, Response } from 'express'
 import { NewService } from '../services/new.service'
 import { v4 as uuid } from 'uuid'
+import { validateData } from '../../../helpers/validate-input-data'
 
 const prisma = new PrismaClient()
 const newService = new NewService(prisma)
@@ -18,17 +19,20 @@ export class NewController {
       writer,
     }
 
-    if (!title || !description || !type || !writer) {
-      res
-        .status(400)
-        .json({
-          message: 'is missing title or description or type or writer field.',
-        })
-    }
-
-    const titleExists = await newService.findOne(title)
-
     try {
+      const message = validateData(data)
+
+      if (
+        message === 'Is missing title field.' ||
+        message === 'Is missing description field.' ||
+        message === 'Is missing type field.' ||
+        message === 'Is missing writer field.'
+      ) {
+        res.status(400).json({ message })
+      }
+
+      const titleExists = await newService.findOne(title)
+
       if (titleExists) {
         throw new Error(`The new with name ${title} already exists.`)
       }
