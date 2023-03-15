@@ -48,4 +48,17 @@ describe('ValidateInputData Helper test', () => {
 
     expect(result).toEqual(message)
   })
+
+  it('Should return message iguals fields are rights.', () => {
+    const data = {
+      title: 'Test',
+      type: 'teste',
+      description: 'test',
+      writer: 'teste',
+    }
+    const message = 'Fields are rights.'
+    const result = validateData(data)
+
+    expect(result).toEqual(message)
+  })
 })
