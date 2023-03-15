@@ -1,7 +1,7 @@
 import { validateData } from './validate-input-data'
 
 describe('ValidateInputData Helper test', () => {
-  it('Should return message iguals title is missing if title is missing', () => {
+  it('Should return message equals title is missing if title is missing', () => {
     const data = {
       description: 'test',
       type: 'teste',
@@ -13,7 +13,7 @@ describe('ValidateInputData Helper test', () => {
     expect(result).toEqual(message)
   })
 
-  it('Should return message iguals description is missing if description is missing', () => {
+  it('Should return message equals description is missing if description is missing', () => {
     const data = {
       title: 'Test',
       type: 'teste',
@@ -25,7 +25,7 @@ describe('ValidateInputData Helper test', () => {
     expect(result).toEqual(message)
   })
 
-  it('Should return message iguals type is missing if type is missing', () => {
+  it('Should return message equals type is missing if type is missing', () => {
     const data = {
       title: 'Test',
       description: 'test',
@@ -37,7 +37,7 @@ describe('ValidateInputData Helper test', () => {
     expect(result).toEqual(message)
   })
 
-  it('Should return message iguals writer is missing if writer is missing', () => {
+  it('Should return message equals writer is missing if writer is missing', () => {
     const data = {
       title: 'Test',
       type: 'teste',
@@ -49,7 +49,7 @@ describe('ValidateInputData Helper test', () => {
     expect(result).toEqual(message)
   })
 
-  it('Should return message iguals fields are rights.', () => {
+  it('Should return message equals fields are rights.', () => {
     const data = {
       title: 'Test',
       type: 'teste',
