@@ -13,4 +13,17 @@ describe('ValidateInputData Helper test', () => {
 
     expect(result).toEqual(message)
   })
+
+  it('Should return message iguals description is missing if description is missing', () => {
+    const data = {
+      id: '3d496809-a5db-4885-a87e-d4c477890f58',
+      title: 'Test',
+      type: 'teste',
+      writer: 'teste',
+    }
+    const message = 'Is missing description field.'
+    const result = validateData(data)
+
+    expect(result).toEqual(message)
+  })
 })
