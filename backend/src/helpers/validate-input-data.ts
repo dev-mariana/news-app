@@ -1,6 +1,4 @@
-import { New } from '@prisma/client'
-
-export const validateData = (data: New) => {
+export const validateData = (data: any) => {
   let message: string
 
   if (!data.title) {
