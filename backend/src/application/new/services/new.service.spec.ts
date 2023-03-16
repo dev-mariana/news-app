@@ -21,7 +21,7 @@ describe('NewService tests', () => {
     }
 
     const result = await newService.create(data)
-    expect(result).toEqual(data)
+    expect(data).toEqual(result)
   })
 
   it('Should find a new by title', async () => {
@@ -47,6 +47,6 @@ describe('NewService tests', () => {
     }
 
     const result = await newService.findOne(title)
-    expect(result).toEqual(resultMock)
+    expect(resultMock).toEqual(result)
   })
 })
