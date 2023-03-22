@@ -37,4 +37,36 @@ describe('NewController tests', () => {
 
     expect(mockResponse.status).toHaveBeenCalledWith(201)
   })
+
+  it('Should return 400 if any required field is missing', async () => {
+    const mockRequest = {
+      body: {
+        id: '123',
+        description: 'This is a test new',
+        type: 'test',
+        created_at: new Date(),
+        writer: 'Test Writer',
+      },
+    } as Request
+
+    const mockResponse = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+      send: jest.fn(),
+    } as unknown as Response
+
+    const mockService = {
+      findOne: jest.fn().mockReturnValue(null),
+      create: jest.fn(),
+    }
+
+    await newController.createNew(mockRequest, mockResponse)
+
+    expect(mockService.findOne).not.toHaveBeenCalled()
+    expect(mockService.create).not.toHaveBeenCalled()
+    expect(mockResponse.status).toHaveBeenCalledWith(400)
+    expect(mockResponse.json).toHaveBeenCalledWith({
+      message: 'Is missing title field.',
+    })
+  })
 })
