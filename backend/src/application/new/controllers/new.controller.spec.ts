@@ -8,6 +8,26 @@ describe('NewController tests', () => {
   const newService = new NewService(prisma)
   const newController = new NewController()
 
+  beforeEach(async () => {
+    const mockRequest = {
+      body: {
+        id: '123',
+        title: 'Test New',
+        description: 'This is a test new',
+        type: 'test',
+        created_at: new Date(),
+        writer: 'Test Writer',
+      },
+    } as Request
+
+    const mockResponse = {
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn(),
+    } as unknown as Response
+
+    await newController.createNew(mockRequest, mockResponse)
+  })
+
   beforeAll(async () => await prisma.$connect())
   afterAll(async () => await prisma.$disconnect())
 
@@ -20,7 +40,7 @@ describe('NewController tests', () => {
     const mockRequest = {
       body: {
         id: '123',
-        title: 'Test New',
+        title: 'Test New 2',
         description: 'This is a test new',
         type: 'test',
         created_at: new Date(),
@@ -68,5 +88,30 @@ describe('NewController tests', () => {
     expect(mockResponse.json).toHaveBeenCalledWith({
       message: 'Is missing title field.',
     })
+  })
+
+  it('Should throw an error if title already exists', async () => {
+    const mockRequest = {
+      body: {
+        id: '123',
+        title: 'Test New',
+        description: 'This is a test new',
+        type: 'test',
+        created_at: new Date(),
+        writer: 'Test Writer',
+      },
+    } as Request
+
+    const mockResponse = {
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn(),
+    } as unknown as Response
+
+    await newController.createNew(mockRequest, mockResponse)
+
+    expect(mockResponse.status).toHaveBeenCalledWith(500)
+    expect(mockResponse.send).toHaveBeenCalledWith(
+      'Error: The new with name Test New already exists.'
+    )
   })
 })
