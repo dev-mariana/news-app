@@ -12,12 +12,11 @@ export class NewService {
   }
 
   async findOne(title: string): Promise<New> {
-    const news = await this.prisma.new.findUnique({ where: { title } })
-
-    return news
+    return await this.prisma.new.findUnique({ where: { title } })
   }
 
   async findAll(): Promise<New[]> {
-    return await this.prisma.new.findMany()
+    const news = await this.prisma.new.findMany()
+    return news
   }
 }
