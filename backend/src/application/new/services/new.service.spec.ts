@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid'
 describe('NewService tests', () => {
   const prisma = new PrismaClient()
   const newService = new NewService(prisma)
+  let data: New
 
   beforeAll(async () => await prisma.$connect())
   afterAll(async () => await prisma.$disconnect())
@@ -25,7 +26,7 @@ describe('NewService tests', () => {
   })
 
   it('Should find a new by title', async () => {
-    const data: New = {
+    data = {
       id: '3d496809-a5db-4885-a87e-d4c477890f58',
       title: 'Test',
       description: 'test',
@@ -48,5 +49,30 @@ describe('NewService tests', () => {
 
     const result = await newService.findOne(title)
     expect(resultMock).toEqual(result)
+  })
+
+  it('Should return all the news', async () => {
+    data = {
+      id: '3d496809-a5db-4885-a87e-d4c477890f58',
+      title: 'Test',
+      description: 'test',
+      type: 'teste',
+      created_at: null,
+      writer: 'teste',
+    }
+
+    await prisma.new.create({ data })
+
+    const resultMock: New = {
+      id: '3d496809-a5db-4885-a87e-d4c477890f58',
+      title: 'Test',
+      description: 'test',
+      type: 'teste',
+      created_at: null,
+      writer: 'teste',
+    }
+
+    const result = await newService.findAll()
+    expect([resultMock]).toEqual(result)
   })
 })
