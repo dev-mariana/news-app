@@ -14,4 +14,8 @@ export class NewService {
   async findOne(title: string): Promise<New> {
     return await this.prisma.new.findUnique({ where: { title } })
   }
+
+  async findAll(): Promise<New[]> {
+    return await this.prisma.new.findMany()
+  }
 }
