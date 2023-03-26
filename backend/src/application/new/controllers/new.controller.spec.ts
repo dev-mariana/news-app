@@ -114,4 +114,26 @@ describe('NewController tests', () => {
       'Error: The new with name Test New already exists.'
     )
   })
+
+  it('Should return a list of news if not have errors', async () => {
+    const mockRequest = {
+      body: {
+        id: '123',
+        title: 'Test New',
+        description: 'This is a test new',
+        type: 'test',
+        created_at: new Date(),
+        writer: 'Test Writer',
+      },
+    } as Request
+
+    const mockResponse = {
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn(),
+    } as unknown as Response
+
+    await newController.findAll(mockRequest, mockResponse)
+
+    expect(mockResponse.status).toHaveBeenCalledWith(201)
+  })
 })
