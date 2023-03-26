@@ -16,7 +16,6 @@ export class NewService {
   }
 
   async findAll(): Promise<New[]> {
-    const news = await this.prisma.new.findMany()
-    return news
+    return await this.prisma.new.findMany()
   }
 }

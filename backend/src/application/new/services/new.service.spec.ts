@@ -1,6 +1,5 @@
 import { New, PrismaClient } from '@prisma/client'
 import { NewService } from './new.service'
-import { v4 as uuid } from 'uuid'
 import { dataMock, resultMock } from '../mocks/mock'
 
 describe('NewService tests', () => {
