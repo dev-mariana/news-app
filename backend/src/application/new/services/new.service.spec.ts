@@ -30,4 +30,11 @@ describe('NewService tests', () => {
     const result = await newService.findAll()
     expect([response]).toEqual(result)
   })
+
+  it('Should return a new by id', async () => {
+    await prisma.new.create({ data })
+
+    const result = await newService.findById(data.id)
+    expect(response).toEqual(result)
+  })
 })
