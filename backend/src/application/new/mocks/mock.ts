@@ -59,9 +59,3 @@ export const newData: New = {
   created_at: new Date(),
   writer: 'Test Writer',
 }
-
-export const requestMock3 = {
-  params: {
-    id: '123',
-  },
-} as unknown as Request

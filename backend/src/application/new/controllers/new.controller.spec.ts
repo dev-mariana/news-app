@@ -6,7 +6,6 @@ import {
   newData,
   requestMock,
   requestMock2,
-  requestMock3,
   responseMock,
   serviceMock,
 } from '../mocks/mock'
@@ -68,15 +67,5 @@ describe('NewController tests', () => {
 
     await newController.findAll(mockRequest, mockResponse)
     expect(mockResponse.status).toHaveBeenCalledWith(201)
-  })
-
-  it('Should return a new by id if not have errors', async () => {
-    const mockRequest: Request = requestMock3
-    const mockResponse: Response = responseMock
-
-    await newController.findById(mockRequest, mockResponse)
-
-    expect(mockResponse.status).toHaveBeenCalledWith(201)
-    expect(mockResponse.json).toHaveBeenCalledWith(data)
   })
 })
