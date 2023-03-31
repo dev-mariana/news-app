@@ -57,4 +57,19 @@ export class NewController {
       res.status(500).send(`${error}`)
     }
   }
+
+  async findById(req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params
+      const newData = await newService.findById(id)
+
+      if (!newData) {
+        throw new Error(`Does not exist any new with ${id}.`)
+      }
+
+      return res.status(201).json(newData)
+    } catch (error) {
+      res.status(500).send(`${error}`)
+    }
+  }
 }
