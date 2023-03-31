@@ -46,13 +46,13 @@ export class NewController {
 
   async findAll(req: Request, res: Response): Promise<Response> {
     try {
-      const newData = await newService.findAll()
+      const data = await newService.findAll()
 
-      if (!newData) {
+      if (!data) {
         throw new Error('Does not exist any new.')
       }
 
-      return res.status(201).json(newData)
+      return res.status(201).json(data)
     } catch (error) {
       res.status(500).send(`${error}`)
     }
