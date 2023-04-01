@@ -52,9 +52,9 @@ export class NewController {
         throw new Error('Does not exist any new.')
       }
 
-      return res.status(201).json(data)
+      return res.status(200).json(data)
     } catch (error) {
-      res.status(500).send(`${error}`)
+      return res.status(500).send(`${error}`)
     }
   }
 
@@ -69,7 +69,7 @@ export class NewController {
 
       return res.status(201).json(newData)
     } catch (error) {
-      res.status(500).send(`${error}`)
+      return res.status(500).send(`${error}`)
     }
   }
 }
