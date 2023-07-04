@@ -22,4 +22,8 @@ export class NewService {
   async findById(id: string): Promise<New> {
     return await this.prisma.new.findUnique({ where: { id } })
   }
+
+  async delete(id: string): Promise<New> {
+    return await this.prisma.new.delete({ where: { id } })
+  }
 }

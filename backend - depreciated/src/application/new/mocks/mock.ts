@@ -25,7 +25,7 @@ export const requestMock = {
     title: 'Test New 2',
     description: 'This is a test new',
     type: 'test',
-    created_at: new Date(),
+    created_at: null,
     writer: 'Test Writer',
   },
 } as unknown as Request
@@ -41,7 +41,7 @@ export const requestMock2 = {
     id: '123',
     description: 'This is a test new',
     type: 'test',
-    created_at: new Date(),
+    created_at: null,
     writer: 'Test Writer',
   },
 } as unknown as Request
@@ -56,7 +56,7 @@ export const newData: New = {
   title: 'Test New',
   description: 'This is a test new',
   type: 'test',
-  created_at: new Date(),
+  created_at: null,
   writer: 'Test Writer',
 }
 
