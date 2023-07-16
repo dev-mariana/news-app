@@ -8,3 +8,6 @@ CREATE TABLE "Journalist" (
 
     CONSTRAINT "Journalist_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Journalist_email_key" ON "Journalist"("email");
