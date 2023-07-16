@@ -13,7 +13,7 @@ datasource db {
 model Journalist {
   id       String @id @default(uuid())
   name     String
-  lastname String
+  last_name String
   email    String
   password String
 }
