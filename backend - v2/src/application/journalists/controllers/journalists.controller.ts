@@ -3,11 +3,11 @@ import { JournalistsService } from '../services/journalists.service';
 import { CreateJournalistDTO } from '../dto/create-journalist.dto';
 import { JournalistEntity } from '../entities/journalist.entity';
 
-@Controller('journalists')
+@Controller('api')
 export class JournalistsController {
   constructor(private readonly journalistService: JournalistsService) {}
 
-  @Post()
+  @Post('/register')
   create(
     @Body() createJournalist: CreateJournalistDTO,
   ): Promise<JournalistEntity> {
