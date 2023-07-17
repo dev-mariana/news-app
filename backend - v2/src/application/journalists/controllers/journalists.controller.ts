@@ -3,7 +3,7 @@ import { JournalistsService } from '../services/journalists.service';
 import { CreateJournalistDTO } from '../dto/create-journalist.dto';
 import { JournalistEntity } from '../entities/journalist.entity';
 
-@Controller('api')
+@Controller('api/journalists')
 export class JournalistsController {
   constructor(private readonly journalistService: JournalistsService) {}
 
