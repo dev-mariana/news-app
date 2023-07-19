@@ -22,4 +22,8 @@ export class JournalistsRepository {
 
     return await this.prisma.journalist.create({ data });
   }
+
+  async findOne(email: string): Promise<JournalistEntity> {
+    return await this.prisma.journalist.findUnique({ where: { email } });
+  }
 }

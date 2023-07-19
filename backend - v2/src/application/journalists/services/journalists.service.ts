@@ -12,4 +12,8 @@ export class JournalistsService {
   ): Promise<JournalistEntity> {
     return await this.repository.create(createJournalist);
   }
+
+  async findOne(email: string): Promise<JournalistEntity> {
+    return await this.repository.findOne(email);
+  }
 }

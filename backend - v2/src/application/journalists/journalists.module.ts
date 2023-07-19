@@ -8,5 +8,6 @@ import { JournalistsRepository } from './repositories/journalists.repository';
   imports: [DatabaseModule],
   controllers: [JournalistsController],
   providers: [JournalistsService, JournalistsRepository],
+  exports: [JournalistsService],
 })
 export class JournalistsModule {}
