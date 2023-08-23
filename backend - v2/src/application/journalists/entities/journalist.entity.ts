@@ -6,4 +6,8 @@ export class JournalistEntity implements Journalist {
   last_name: string;
   email: string;
   password: string;
+  created_at: Date;
+  updated_at: Date;
+  news: any[];
+  kinds_news: any[];
 }
