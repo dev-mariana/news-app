@@ -25,7 +25,7 @@ model New {
   id            String     @id @default(uuid())
   title         String
   description   String
-  content       String     @unique
+  content       String     
   image         String
   created_at    DateTime   @default(now())
   updated_at    DateTime   @default(now())
