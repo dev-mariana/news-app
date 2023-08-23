@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,9 +8,41 @@ datasource db {
 }
 
 model Journalist {
-  id        String @id @default(uuid())
-  name      String
-  last_name String
-  email     String @unique
-  password  String
+  id         String    @id @default(uuid())
+  name       String
+  last_name  String
+  email      String    @unique
+  password   String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @default(now())
+  news       New[]
+  kinds_news KindNew[]
+
+  @@map("journalist")
+}
+
+model New {
+  id            String     @id @default(uuid())
+  title         String
+  description   String
+  content       String     @unique
+  image         String
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @default(now())
+  journalist_id String
+  journalist    Journalist @relation(fields: [journalist_id], references: [id])
+  kind_new_id   String
+  kind_new      KindNew    @relation(fields: [kind_new_id], references: [id])
+
+  @@map("new")
+}
+
+model KindNew {
+  id            String     @id @default(uuid())
+  name          String
+  news          New[]
+  journalist_id String
+  journalist    Journalist @relation(fields: [journalist_id], references: [id])
+
+  @@map("kind_new")
 }
