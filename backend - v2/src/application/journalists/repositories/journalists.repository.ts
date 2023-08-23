@@ -20,10 +20,16 @@ export class JournalistsRepository {
       password: encryptedPassword,
     };
 
-    return await this.prisma.journalist.create({ data });
+    return await this.prisma.journalist.create({
+      data,
+      include: { news: true, kinds_news: true },
+    });
   }
 
   async findOne(email: string): Promise<JournalistEntity> {
-    return await this.prisma.journalist.findUnique({ where: { email } });
+    return await this.prisma.journalist.findUnique({
+      where: { email },
+      include: { news: true, kinds_news: true },
+    });
   }
 }
